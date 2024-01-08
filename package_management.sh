@@ -4,13 +4,13 @@ count_installed_packages() {
     count=$(pacman -Qq | wc -l)
     echo ""
     echo "Total installed packages: $count"
-    read -p "Press any key to continue"
+    read -p "Press enter to continue"
 }
 
 backup_installed_packages() {
     pacman -Qqe > pkglist
     echo "Installed packages list backed up to 'pkglist'"
-    read -p "Press any key to continue"
+    read -p "Press enter to continue"
 }
 
 install_packages_from_file() {
@@ -19,13 +19,13 @@ install_packages_from_file() {
 		read -p "Are you sure you want to install from '$1'? [y/N]" answ
 		if [ "$answ" == "y" ]; then
 			sudo pacman -S --needed - < "$1"
-			read -p "Installation complete! Press any key to continue."
+			read -p "Installation complete! Press enter to continue."
 		else	
-			read -p "Aborting. Press any key to return to menu."
+			read -p "Aborting. Press enter to return to menu."
 		fi
     else
         echo "File not found: $1"
-        read -p "Press any key to continue"
+        read -p "Press enter to continue"
     fi
 }
 
